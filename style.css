@@ -39,11 +39,19 @@ h4
 
 .modal-dialog
 {
-    width: 90%
+    width: 90%;
 }
 
 .instruction_image
 {
     display: inline-block;
     width: 45%;
+}
+
+video
+{
+    background: url('game_console.png');
+    background-size: cover;
+    background-position: center;
+    padding: 25px;
 }
