@@ -32,6 +32,12 @@ function modelLoaded()
 
 function draw()
 {
+	fill(255, 255, 255);
+	textSize(40);
+	textAlign(CENTER);
+	text("Press Play Button To Start The Game"), gameConfig.screenX/2, gameConfig.screenX/1;
+	textSize(40);
+
 	game()
 	if(noseX < 300)
 	{
@@ -70,4 +76,43 @@ function startGame()
 {
 	gameStatus = "start";
 	document.getElementById("status").innerHTML = "Game Is Loading";
+}
+
+function changeGameStatus(character)
+{
+	if(GameStatus=="start"&& noseX !="" && gameConfig.status==="start")
+	{
+		world_start.play();
+	}
+}
+
+function manualControl(character)
+{
+	if(character.live)
+	{
+		if(keyDown(noseX < 300))
+		{
+			character.velocity.x-=gameConfig.moveSpeed;
+			character.changeAnimation('move');
+			character.mirrorX(-1);
+		}
+		if(keyDown(noseX > 300))
+		{
+			character.velocity.x-=gameConfig.moveSpeed;
+			character.changeAnimation('move');
+			character.mirrorX(1);
+		}
+		if(!keyDown(control.left)&&!keyDown(control.right)&&!keyDown(control.up))
+		{
+			character.changeAnimation('stand');
+		}
+	}
+}
+
+function jumping(character)
+{
+	if((noseY < 200 && character.live)|| (touchIsDown&&character.live))
+	{
+		character.velocity.y+=gameConfig.jump;
+	} 
 }
